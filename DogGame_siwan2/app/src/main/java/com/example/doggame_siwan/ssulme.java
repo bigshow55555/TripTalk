@@ -9,11 +9,10 @@ public class ssulme extends Dog {
     }
 
     @Override
-    public String bark() {
+    public void bark() {
 
-        a = "컹컹";
-
-        return a;
+        super.a = "컹컹";
+        super.bark();
     }
 
 }

@@ -2,21 +2,22 @@ package com.example.doggame_siwan;
 
 public class Dog
 {
-    public String a ="";
+    protected String a ="멍멍";
+    private DogListener dogListener = null;
 
     public Dog()
     {
 
     }
 
-    public String bark()
+    public void bark()
         {
 
-            String a = "멍멍";
-
-            return a;
+            dogListener.onBark(a);
         }
 
+    public void onDogListener(DogListener listener){
+        this.dogListener =listener;
 
-
+    }
 }

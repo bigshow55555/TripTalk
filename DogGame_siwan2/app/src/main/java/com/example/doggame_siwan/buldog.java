@@ -9,10 +9,10 @@ public class buldog extends Dog {
     }
 
     @Override
-    public String bark() {
+    public void bark() {
 
-        a = "왈왈";
+        super.a = "왈왈";
+        super.bark();
 
-        return a;
     }
 }

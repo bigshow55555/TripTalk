@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener, DogListener {
 
-    buldog buldogclass = new buldog();
-    poodle poodleclass = new poodle();
-    ssulme ssulmeclass = new ssulme();
+    private TextView textView;
+   private buldog buldogclass = new buldog();
+   private poodle poodleclass = new poodle();
+   private ssulme ssulmeclass = new ssulme();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,28 +30,37 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         Button button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(this);
 
+        ssulmeclass.onDogListener(this);
+        poodleclass.onDogListener(this);
+        buldogclass.onDogListener(this);
     }
+
+
     @Override
     public void onClick(View view)
     {
-        TextView textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textView);
 
         switch (view.getId())
         {
 
             case R.id.button :
-                textView.setText(buldogclass.bark());
+                buldogclass.bark();
                 break;
 
             case R.id.button2 :
-                textView.setText(poodleclass.bark());
+                poodleclass.bark();
                 break;
 
             case R.id.button3 :
-                textView.setText(ssulmeclass.bark());
+                ssulmeclass.bark();
                 break;
         }
     }
 
+    @Override
+    public void onBark(String Sound) {
+        textView.setText(Sound);
+    }
 }
 
